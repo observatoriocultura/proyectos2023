@@ -59,13 +59,13 @@
                         <p>
                             <span class="text-primary">Gobierno Distrital: </span>{{ currentIntervencion['Alcaldía'] }}
                         </p>
-                        <p v-show="currentIntervencion['Enfoque de la administración'].length > 0">
+                        <p v-show="currentIntervencion['Enfoque de la administración']">
                             <span class="text-primary">Enfoque de la administración:</span> {{ currentIntervencion['Enfoque de la administración'] }}
                         </p>
                         <p>
                             <span class="text-primary">Logros:</span> {{ currentIntervencion['Logros a resaltar'] }}
                         </p>
-                        <p>
+                        <p v-show="currentIntervencion['Instrumento normativo de apoyo']">
                             <span class="text-primary">Instrumento normativo de apoyo:</span> {{ currentIntervencion['Instrumento normativo de apoyo'] }}
                         </p>
                     </div>
