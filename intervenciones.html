@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="CodeHim">
+    <link rel="shortcut icon" href="resources/images/app/favicon.png"> 
+    <title>Intervenciones Carrera 7a Bogotá - Observatorio de Culturas</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Slick Slider CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css'>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="projects/intervenciones_cra_septima/css/style.css">
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>const {createApp} = Vue;</script>
+    <script src='projects/intervenciones_cra_septima/data/intervenciones_cra_7.js'></script>
+</head>
+
+<body>
+    <main id="intervencionesApp">
+        <!-- Start DEMO HTML (Use the following code into your project)-->
+        <section class="timeline-carousel">
+            <div class="container-fluid">
+                <div class="text-center text-white mb-5">
+                    <h2>Intervenciones Carrera Séptima</h2>
+                    <p class="lead text-muted">Bogotá a lo largo del tiempo</p>
+                </div>
+            </div>
+            <div class="timeline-carousel__item-wrapper" data-js="timeline-carousel">
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item" v-for="intervencion in intervenciones">
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">{{ intervencion['Fecha de implementación'] }}</span>
+                        <span class="month">{{ intervencion['Nombre de acción'] }}</span>
+                        <p>
+                            {{ intervencion['Descripción'] }}
+                        </p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </section>
+        <!-- END EDMO HTML (Happy Coding!)-->
+    </main>
+
+    <!-- jQuery JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <!-- Slick Carousel JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'></script>
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+
+    <script src="projects/intervenciones_cra_septima/js/script.js"></script>
+
+</body>
+
+</html>

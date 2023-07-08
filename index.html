@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="CodeHim">
+    <title>GitHub Pages - Observatorio de Culturas</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Slick Slider CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css'>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>const {createApp} = Vue;</script>
+    <script src='data/intervenciones_cra_7.js'></script>
+    
+    
+</head>
+
+<body>
+
+
+
+    <main id="intervencionesApp">
+        <!-- Start DEMO HTML (Use the following code into your project)-->
+        <section class="timeline-carousel">
+            <div class="container-fluid">
+                <div class="text-center text-white mb-5">
+                    <h2>Intervenciones Carrera Séptima</h2>
+                    <p class="lead text-muted">Bogotá a lo largo del tiempo</p>
+                </div>
+            </div>
+            <div class="timeline-carousel__item-wrapper" data-js="timeline-carousel">
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item" v-for="intervencion in intervenciones">
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">{{ intervencion['Fecha de implementación'] }}</span>
+                        <span class="month">{{ intervencion['Nombre de acción'] }}</span>
+                        <p>
+                            {{ intervencion['Descripción'] }}
+                        </p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">1998 - 2001</span>
+                        <span class="month">Intervención para reducir la inseguridad y la habitanza de Calle en el barrio San Bernardo </span>
+                        <p>
+                            Estrategia de fortalecimiento, dignificación y reintegración del tejido social y poblaciones vulnerables localizadas en el sector de San Bernardo. Ya que, en este espacio se inició un proceso de degeneración del espacio público desde hacía dos décadas atrás. La estrategia buscó generar oportunidades de inclusión social, sostenibles y duraderas. Además, esta se enfoco en los lazos familiares y el restablecimiento de las dinámicas comunitarias tendientes a la inclusión social.
+                        </p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">2003</span>
+                        <span class="month">Tristique magna sit amet</span>
+                        <p>Tristique magna sit amet purus gravida quis blandit turpis.</p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">2003</span>
+                        <span class="month">Mauris pellentesque pulvinar pellentesque habitant</span>
+                        <p>Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu turpis
+                            egestas pretium aenean pharetra magna ac placerat vestibulum. Cursus in hac habitasse platea
+                            dictumst quisque. Ipsum dolor sit amet consectetur adipiscing elit. </p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">2004</span>
+                        <span class="month">Cum sociis natoque penatibus</span>
+                        <p>Cum sociis natoque penatibus et magnis dis. Interdum velit laoreet id donec ultrices
+                            tincidunt arcu non. Lorem sed risus ultricies tristique. Dui vivamus arcu felis bibendum ut.
+                            Tortor id aliquet lectus proin nibh nisl condimentum id.</p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+
+                    <div class="timeline-carousel__item-inner">
+                        <div class="pointer"></div>
+                        <span class="month">Dictumst vestibulum rhoncus est</span>
+                        <p>Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Posuere ac ut
+                            consequat semper.</p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">2005</span>
+                        <span class="month">Id nibh tortor id aliquet</span>
+                        <p>Nunc eget lorem dolor sed viverra. Id nibh tortor id aliquet. Sed blandit libero volutpat sed
+                            cras. Fermentum posuere urna nec tincidunt praesent. Id ornare arcu odio ut sem nulla
+                            pharetra diam.</p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">2006</span>
+                        <span class="month">Pulvinar neque laoreet suspendisse</span>
+                        <p>Pulvinar neque laoreet suspendisse interdum consectetur. Libero volutpat sed cras ornare. Ac
+                            auctor augue mauris augue.</p>
+                        <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+                <!--Timeline item-->
+                <div class="timeline-carousel__item">
+
+                    <div class="timeline-carousel__item-inner">
+                        <span class="year">2007</span>
+                        <span class="month">Egestas quis ipsum</span>
+                        <p>Non odio euismod lacinia at. Egestas quis ipsum suspendisse ultrices gravida. Dui nunc mattis
+                            enim ut tellus elementum sagittis vitae. Lectus quam id leo in vitae turpis massa sed
+                            elementum. Ridiculus mus mauris vitae ultricies leo integer malesuada. Semper feugiat nibh
+                            sed pulvinar proin gravida hendrerit lectus./p>
+                            <a href="#" class="read-more">Ver más</a>
+                    </div>
+                </div>
+                <!--/Timeline item-->
+
+            </div>
+        </section>
+        <!-- END EDMO HTML (Happy Coding!)-->
+    </main>
+
+    <!-- jQuery JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <!-- Slick Carousel JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'></script>
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+
+
+
+    <script>
+        
+        var intervencionesApp = createApp({
+            data(){
+                return{
+                    title: 'HOLA MUNDO',
+                    intervenciones: intervenciones,
+                }
+            },
+            methods: {
+                
+            },
+            mounted(){
+                //this.getList()
+            }
+        }).mount('#intervencionesApp')
+    </script>
+
+    <script>
+    $.js = function(el) {
+        return $('[data-js=' + el + ']')
+    };
+
+    function carousel() {
+        $.js('timeline-carousel').slick({
+            infinite: false,
+            arrows: true,
+            arrows: true,
+            prevArrow: '<div class="slick-prev"> <div class="btn mr-3 btn-warning d-flex justify-content-center align-items-center"> <div>Anterior</div><svg class="ml-1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"> <path d="M10.1,19.1l1.5-1.5L7,13h14.1v-2H7l4.6-4.6l-1.5-1.5L3,12L10.1,19.1z"/> </svg></div></div>',
+            nextArrow: '<div class="slick-next"> <div class="btn btn-warning d-flex justify-content-center align-items-center"> <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M 14 4.9296875 L 12.5 6.4296875 L 17.070312 11 L 3 11 L 3 13 L 17.070312 13 L 12.5 17.570312 L 14 19.070312 L 21.070312 12 L 14 4.9296875 z"/> </svg> <div>Siguiente</div></div></div>',
+            dots: true,
+            autoplay: false,
+            speed: 1100,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            responsive: [{
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]
+        });
+    }
+
+    carousel();
+    </script>
+
+</body>
+
+</html>
