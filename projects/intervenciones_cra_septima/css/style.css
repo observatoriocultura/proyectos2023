@@ -4,6 +4,30 @@
 * {
   outline: none;
 }
+body{
+  font-family: 'Rubik', sans-serif;
+  color: #FFF;
+}
+
+.modal-content{
+  background-color: #201632;
+}
+
+.modal-content h1,h2,h3,h4{
+  color: #fbb62d;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+}
+
+.text-primary{
+  color: #ffc107 !important;
+}
 
 .timeline-carousel {
   margin: 0;

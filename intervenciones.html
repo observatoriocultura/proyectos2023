@@ -29,28 +29,52 @@
             <div class="container-fluid">
                 <div class="text-center text-white mb-5">
                     <h2>Intervenciones Carrera Séptima</h2>
-                    <p class="lead text-muted">Bogotá a lo largo del tiempo</p>
+                    <p class="lead">Bogotá a lo largo del tiempo</p>
                 </div>
             </div>
             <div class="timeline-carousel__item-wrapper" data-js="timeline-carousel">
 
                 <!--Timeline item-->
-                <div class="timeline-carousel__item" v-for="intervencion in intervenciones">
+                <div class="timeline-carousel__item" v-for="(intervencion,key) in intervenciones">
                     <div class="timeline-carousel__item-inner">
                         <span class="year">{{ intervencion['Fecha de implementación'] }}</span>
                         <span class="month">{{ intervencion['Nombre de acción'] }}</span>
                         <p>
                             {{ intervencion['Descripción'] }}
                         </p>
-                        <a href="#" class="read-more">Ver más</a>
+                        <a href="#" class="read-more" data-bs-toggle="modal" data-bs-target="#moreInfoModal" v-on:click="setCurrent(key)">Ver más</a>
                     </div>
                 </div>
-
-                
-
             </div>
         </section>
         <!-- END EDMO HTML (Happy Coding!)-->
+        <!-- Modal -->
+        <div class="modal fade" id="moreInfoModal" tabindex="-1" aria-labelledby="moreInfoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="lead text-center">{{ currentIntervencion['Nombre de acción'] }}</p>
+                        <h3 class="text-center">{{ currentIntervencion['Fecha de implementación'] }}</h3>
+                        <p>{{ currentIntervencion['Descripción'] }}</p>
+                        <p>
+                            <span class="text-primary">Gobierno Distrital: </span>{{ currentIntervencion['Alcaldía'] }}
+                        </p>
+                        <p v-show="currentIntervencion['Enfoque de la administración'].length > 0">
+                            <span class="text-primary">Enfoque de la administración:</span> {{ currentIntervencion['Enfoque de la administración'] }}
+                        </p>
+                        <p>
+                            <span class="text-primary">Logros:</span> {{ currentIntervencion['Logros a resaltar'] }}
+                        </p>
+                        <p>
+                            <span class="text-primary">Instrumento normativo de apoyo:</span> {{ currentIntervencion['Instrumento normativo de apoyo'] }}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">CERRAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- jQuery JS -->
