@@ -292,3 +292,29 @@ body{
 .slick-next {
   right: 30px;
 }
+
+.gob {
+  padding: 5px;
+  height: 2em;
+}
+
+.gob-1 {
+  background-color: #009adc;
+  color: #FFF;
+}
+.gob-2 {
+  background-color: #f7e702;
+  color: #f70c0b;
+}
+.gob-3 {
+  background-color: #d1c300;
+  color: #000000;
+}
+.gob-4 {
+  background-color: #f7f7f7;
+  color: #c00f63;
+}
+.gob-6 {
+  background-color: #0c8440;
+  color: #FFFFFF;
+}

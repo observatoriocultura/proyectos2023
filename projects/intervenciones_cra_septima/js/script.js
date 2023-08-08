@@ -11,6 +11,15 @@
                 setCurrent: function(key){
                     this.currentIntervencion = this.intervenciones[key]
                 },
+                classGobierno: function(textoAlcaldia){
+                    if ( textoAlcaldia == 'Enrique Peñalosa I' ) return 'gob-1'
+                    if ( textoAlcaldia == 'Luis Eduardo Garzón' ) return 'gob-2'
+                    if ( textoAlcaldia == 'Samuel Moreno (Destituido) / Clara López' ) return 'gob-3'
+                    if ( textoAlcaldia == 'Gustavo Petro' ) return 'gob-4'
+                    if ( textoAlcaldia == 'Enrique Peñalosa II' ) return 'gob-1'
+                    if ( textoAlcaldia == 'Claudia López Hernández' ) return 'gob-6'
+                    return 'gob-1'
+                },
             },
             mounted(){
                 //this.currentIntervencion = 
@@ -32,7 +41,7 @@
             prevArrow: '<div class="slick-prev"> <div class="btn mr-3 btn-warning d-flex justify-content-center align-items-center"> <div>Anterior</div><svg class="ml-1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"> <path d="M10.1,19.1l1.5-1.5L7,13h14.1v-2H7l4.6-4.6l-1.5-1.5L3,12L10.1,19.1z"/> </svg></div></div>',
             nextArrow: '<div class="slick-next"> <div class="btn btn-warning d-flex justify-content-center align-items-center"> <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M 14 4.9296875 L 12.5 6.4296875 L 17.070312 11 L 3 11 L 3 13 L 17.070312 13 L 12.5 17.570312 L 14 19.070312 L 21.070312 12 L 14 4.9296875 z"/> </svg> <div>Siguiente</div></div></div>',
             dots: true,
-            autoplay: true,
+            autoplay: false,
             speed: 1100,
             slidesToShow: 3,
             slidesToScroll: 3,
