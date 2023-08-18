@@ -1,0 +1,57 @@
+.btn-number{
+    width: 35px;
+    font-size: 0.7em;
+}
+
+.prioridad {
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.prioridad-1 {
+    background-color: #bfe1f6;
+    color: #2d62a9;
+}
+.prioridad-2 {
+    background-color: #ffe5a0;
+    color: #352a0c;
+}
+.prioridad-3 {
+    background-color: #ffcfc9;
+    color: #b10242;
+}
+
+.card{
+    border-radius: 3px;
+}
+
+.card-title{
+    font-size: 1.2em;
+}
+
+.revision-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 50%;
+    background-color: #e1322e; /* Color de fondo */
+    color: white; /* Color del número */
+    font-size: 0.6em; /* Tamaño de texto pequeño */
+}
+
+.main-title{
+    background-color: #5e4293;
+    color: white;
+    margin-bottom: 0.5em;
+}
+
+.texto-propuesto {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    border-left: 2px solid #bfe1f6;
+    padding-left: 0.5em;
+    font-style: italic;
+}

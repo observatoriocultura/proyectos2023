@@ -1,30 +1,30 @@
 // VueApp
-        //-----------------------------------------------------------------------------
-        var intervencionesApp = createApp({
-            data(){
-                return{
-                    intervenciones: intervenciones,
-                    currentIntervencion: intervenciones[0],
-                }
-            },
-            methods: {
-                setCurrent: function(key){
-                    this.currentIntervencion = this.intervenciones[key]
-                },
-                classGobierno: function(textoAlcaldia){
-                    if ( textoAlcaldia == 'Enrique Peñalosa I' ) return 'gob-1'
-                    if ( textoAlcaldia == 'Luis Eduardo Garzón' ) return 'gob-2'
-                    if ( textoAlcaldia == 'Samuel Moreno (Destituido) / Clara López' ) return 'gob-3'
-                    if ( textoAlcaldia == 'Gustavo Petro' ) return 'gob-4'
-                    if ( textoAlcaldia == 'Enrique Peñalosa II' ) return 'gob-1'
-                    if ( textoAlcaldia == 'Claudia López Hernández' ) return 'gob-6'
-                    return 'gob-1'
-                },
-            },
-            mounted(){
-                //this.currentIntervencion = 
-            }
-        }).mount('#intervencionesApp')
+//-----------------------------------------------------------------------------
+var intervencionesApp = createApp({
+    data(){
+        return{
+            intervenciones: intervenciones,
+            currentIntervencion: intervenciones[0],
+        }
+    },
+    methods: {
+        setCurrent: function(key){
+            this.currentIntervencion = this.intervenciones[key]
+        },
+        classGobierno: function(textoAlcaldia){
+            if ( textoAlcaldia == 'Enrique Peñalosa I' ) return 'gob-1'
+            if ( textoAlcaldia == 'Luis Eduardo Garzón' ) return 'gob-2'
+            if ( textoAlcaldia == 'Samuel Moreno (Destituido) / Clara López' ) return 'gob-3'
+            if ( textoAlcaldia == 'Gustavo Petro' ) return 'gob-4'
+            if ( textoAlcaldia == 'Enrique Peñalosa II' ) return 'gob-1'
+            if ( textoAlcaldia == 'Claudia López Hernández' ) return 'gob-6'
+            return 'gob-1'
+        },
+    },
+    mounted(){
+        //this.currentIntervencion = 
+    }
+}).mount('#intervencionesApp')
     
 
     // Carousel

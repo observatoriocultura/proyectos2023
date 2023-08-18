@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="CodeHim">
+    <link rel="shortcut icon" href="resources/images/app/favicon.png"> 
+    <title>Análisis UX/UI SICON 2023</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Slick Slider CSS -->
+    
+    <link rel='stylesheet' href='resources/css/pacarina.css'>
+    <link rel='stylesheet' href='resources/css/theme-dogcc.css'>
+    <link rel='stylesheet' href='resources/css/style.css'>
+    <link rel='stylesheet' href='projects/pai24_uxui_sicon/css/project_style.css'>
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>const {createApp} = Vue;</script>
+    <script src='projects/pai24_uxui_sicon/data/revisiones.js'></script>
+    <script src='projects/pai24_uxui_sicon/data/imagenes.js'></script>
+    
+</head>
+
+<body>
+    <div id="revisionesApp">
+        <div class="text-center py-1 main-title fixed-top">
+            Análisis UX/UI SICON 2023
+        </div>
+        <div class="container">
+            <div class="center_box_750">
+                <p class="text-center">
+                    Este informe muestra el detalle de la revisión del proceso de ingreso a la plataforma
+                    SICON, la inscripción de una propuesta a una convocatoria y la respuesta final
+                    de la encuesta satisfacción respecto al uso de la plataforma.
+                </p>
+                <p class="text-center">
+                    Se presenta a continuación el análisis de <strong class="text-primary">{{ imagenes.length }}</strong>  secciones y
+                    <strong class="text-primary">{{ revisiones.length }}</strong> revisiones puntuales realizadas.
+                </p>
+            </div>
+            <div>
+                <div class="text-center d-none">
+                    <div class="btn-group mb-2">
+                        <button class="btn btn-sm btn-number" 
+                            v-for="(revision, key) in revisiones"
+                            v-bind:class="{'btn-light': revision.id != currentRevision.id, 'btn-primary': revision.id == currentRevision.id }"
+                            v-on:click="setCurrent(key)">
+                            {{ revision.id }}
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row d-none">
+                    <div class="col-md-8">
+                        <img class="w-100 shadow border" v-bind:src="`projects/pai24_uxui_sicon/images/images/` + currentRevision.archivo + `.png`" alt="Captura de pantalla">
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <h3>
+                                {{ currentRevision.titulo }}
+                            </h3>
+                            <p>
+                                <span class="badge bg-danger">{{ currentRevision.numero_marcador }}</span>
+                                {{ currentRevision.descripcion }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2 my-2 border-bottom" v-for="(imagen,key) in imagenes">
+                    <div class="col-md-7">
+                        <img class="w-100 shadow border" v-bind:src="`projects/pai24_uxui_sicon/images/images/` + imagen + `.png`" alt="Captura de pantalla">
+                    </div>
+                    <div class="col-md-5">
+                        <div v-for="(revision, key) in revisiones" v-show="imagen == revision.archivo" class="card mb-1">
+                            <div class="card-body">
+                                <h3 class="card-title d-flex">
+                                    <span class="revision-marker me-1">{{ revision.numero_marcador }}</span>
+                                    <span>{{ revision.titulo }}</span>
+                                </h3>
+                                <small class="text-muted me-2">Tipo revisión</small>
+                                <span class="me-2">{{ revision.tipo }}</span>
+    
+                                <small class="text-muted me-2">Prioridad</small>
+                                <span class="prioridad" v-bind:class="classPrioridad(revision.prioridad)">{{ revision.prioridad }}</span>
+    
+                                <br>
+    
+                                <small class="text-muted me-2">Sección:</small>
+                                <span class="text-primary">{{ revision.seccion }}</span> &middot;
+    
+                                <span class="text-primary">{{ revision.funcion }}</span>
+    
+                                
+                                <br>
+                                {{ revision.descripcion }}
+    
+                                <p class="texto-propuesto" v-show="revision.texto_propuesto.length > 0">
+                                    {{ revision.texto_propuesto }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    
+
+    <!-- jQuery JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <!-- Slick Carousel JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'></script>
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+
+    <script src="projects/pai24_uxui_sicon/js/script.js"></script>
+
+</body>
+
+</html>
