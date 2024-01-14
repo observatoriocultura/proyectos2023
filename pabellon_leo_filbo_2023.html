@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mauricio Ojeda Pepinosa Observatorio de Cultura Bogotá">
+    <link rel="shortcut icon" href="resources/images/app/favicon.png"> 
+    <title>Pabellón #LEOBogotá FilBo 2023 - Observatorio de Culturas</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Slick Slider CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css'>
+    <!-- Style CSS -->
+    <link rel='stylesheet' href='resources/css/pacarina.css'>
+    <link rel='stylesheet' href='resources/css/theme-crb.css'>
+    <link rel='stylesheet' href='resources/css/style.css'>
+
+    <!-- FONT AWESOME -->
+    <script src="resources/js/fa.js"></script>
+
+    <!-- Vue.js -->
+    <script src="resources/js/vue.global.js"></script>
+    <script>const {createApp} = Vue;</script>
+    <script src='projects/pabellon_leo_filbo_2023/data/data.js'></script>
+    <style>
+        .main-title{
+            background-color: #c53c99;
+            color: white;
+            margin-bottom: 0.5em;
+        }
+
+        .image-container {
+            position: relative;
+            width: 802px;
+            height: auto;
+        }
+        
+        .label {
+            position: absolute;
+            background-color: rgba(200, 240, 255, 0.8);
+            font-size: 0.8em;
+            padding: 2px 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        </style>
+</head>
+
+<body>
+    <div class="text-center py-1 main-title fixed-top">
+        Medición de Asistentes Pabellón #LeoBogotá FilBo 2023
+    </div>
+    <div class="container">
+        <div id="filbo2023App">
+            <ul class="nav nav-tabs mb-2 justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" v-on:click="setSection('heatMap')" v-bind:class="{'active': section == 'heatMap' }">
+                        <i class="fa-solid fa-fire"></i> Mapa de calor
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" v-on:click="setSection('powerbi')" v-bind:class="{'active': section == 'powerbi' }">
+                        <i class="fa-solid fa-chart-simple"></i> Balance
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" v-on:click="setSection('creditos')" v-bind:class="{'active': section == 'creditos' }">
+                        <i class="fa-solid fa-info-circle"></i> Créditos
+                    </a>
+                </li>
+            </ul>
+        
+            <div v-show="section == 'heatMap'">
+                <nav class="nav nav-pills nav-fill mb-2">
+                    <a class="nav-link" href="#" v-for="(dia,key) in dias" v-bind:class="{'active': key == currentDia}"
+                        v-on:click="setDia(key)">
+                        {{ dia[2] }}
+                    </a>
+                </nav>
+                <nav class="nav nav-pills nav-fill mb-2">
+                    <a class="nav-link" href="#" v-for="(hora,keyHora) in horas"
+                        v-bind:class="{'active': keyHora == currentHora}" v-on:click="setHora(keyHora)">
+                        {{ hora[1] }}
+                    </a>
+                </nav>
+                <div>
+                    <div class="mb-2 text-center">
+                        <div class="btn-group me-2">
+                            <button class="btn btn-light w50p" v-on:click="goToConteo(-1)" v-bind:disabled="playing">
+                                <i class="fa-solid fa-backward-step"></i>
+                            </button>
+                            <button class="btn btn-light w50p" v-on:click="playConteos" v-show="!playing">
+                                <i class="fa fa-play"></i>
+                            </button>
+                            <button class="btn btn-light w50p" v-on:click="pauseConteos" v-show="playing">
+                                <i class="fa fa-pause"></i>
+                            </button>
+                            <button class="btn btn-light w50p" v-on:click="goToConteo(1)" v-bind:disabled="playing">
+                                <i class="fa-solid fa-forward-step"></i>
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn w50p" v-for="speed in speeds" v-on:click="setSpeed(speed.miliseconds)"
+                                v-bind:disabled="playing">
+                                <span v-bind:class="{'text-primary': speed.miliseconds == playingSpeed }">
+                                    {{ speed.label }}
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="image-container me-2">
+                            <img v-bind:src="`projects/pabellon_leo_filbo_2023/images/` + currentImg" alt="Imagen"
+                                style="width: 800px;"
+                                onerror="this.src='projects/pabellon_leo_filbo_2023/images/nd.jpg'" class="border">
+                            <div class="label" v-for="zona in zonas" v-bind:style="labelPosition(zona)" v-show="displayLabels">
+                                {{ zona[1] }}
+                            </div>
+                            <div class="mt-2">
+                                <input type="checkbox" v-model="displayLabels"> Nombres zonas &middot;
+                            </div>
+                        </div>
+                        <div class="border p-2 w-100 bg-white">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <th class="text-center"></th>
+                                    <th class="text-center">Zona</th>
+                                    <th class="text-center">Asistentes</th>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(conteo, keyConteo) in conteos" v-show="currentMomento == conteo[6]">
+                                        <td class="text-center">
+                                            <i class="fa fa-circle" v-bind:class="classAsistentes(conteo)"></i>
+                                        </td>
+                                        <td>
+                                            {{ conteo[3] }}
+                                            <br>
+                                            <div class="progress" style="height: 6px;">
+                                                <div class="progress-bar" role="progressbar"
+                                                    v-bind:style="`width: `+ asistentesPercent(conteo[5]) +`%;`"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">{{ conteo[5] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div v-show="section == `powerbi`">
+                <iframe title="Report Section" width="100%" height="850"
+                    src="https://app.powerbi.com/view?r=eyJrIjoiZWQzMjY1Y2ItMTUwYS00OTJkLWE2Y2UtZGE2YWRiZDRkNmNmIiwidCI6IjRmNzkzOWM3LWFhNjAtNDliZC05YjdiLTZmODFjMzdkMWIzNyJ9"
+                    frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+
+            <div v-show="section == `creditos`">
+                <div class="center_box_750">
+                    <div class="text-center">
+                        <p>Secretaría de Cultura, Recreación y Deporte</p>
+                        <p>Subsecretaría de Cultura Ciudadana y Gestión del Conocimiento</p>
+                        <p>Dirección Observatorio y Gestión del Conocimiento Cultural</p>
+                        <img src="resources/images/app/dogcc-1.png" class="w150p mb-2">
+                        <hr>
+                        <p>
+                            Camilo Tiria Buitrago <br><small class="text-muted">Dirección</small>
+                        </p>
+                        <p>
+                            Gisela Castrillón Moreno <br><small class="text-muted">Metodología Medición</small>
+                        </p>
+                        <p>
+                            Mábel Ayala Meneses <br><small class="text-muted">Procesamiento Geográfico</small>
+                        </p>
+                        <p>
+                            Mauricio Ojeda Pepinosa <br><small class="text-muted">Visualización de Datos</small>
+                        </p>
+                        <br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- jQuery JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <!-- Slick Carousel JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'></script>
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+
+    <script src="resources/js/pcrn.js"></script>
+    <script src="projects/pabellon_leo_filbo_2023/js/script.js"></script>
+
+</body>
+
+</html>
